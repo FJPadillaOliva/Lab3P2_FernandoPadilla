@@ -59,7 +59,7 @@ public class Lab3P2_FernandoPadilla {
                     simularC(); 
                     break;
                 case 7:
-                    
+                    listarC();
                     break;
                 case 8:
                     opcion = 8;
@@ -256,5 +256,10 @@ public class Lab3P2_FernandoPadilla {
         } while (opc != 2);
     }
     
-    
+    public static void listarC(){
+        for (Object t : Compras) {
+            System.out.println("Compra #" +Compras.indexOf(t));
+            System.out.println(t);
+        }
+    }
 }
