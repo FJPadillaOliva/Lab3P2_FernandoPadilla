@@ -37,5 +37,10 @@ public class Comidas extends Productos {
     public void setPrecio(double precio) {
         this.precio = precio;
     }
+
+    @Override
+    public String toString() {
+        return "Comidas{" + "vencimiento=" + vencimiento + '}';
+    }
     
 }

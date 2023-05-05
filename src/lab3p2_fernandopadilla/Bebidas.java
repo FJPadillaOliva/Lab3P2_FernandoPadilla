@@ -37,6 +37,11 @@ public class Bebidas extends Productos {
     public void setPrecio(double precio) {
         this.precio = precio;
     }
+
+    @Override
+    public String toString() {
+        return "Bebidas{" + "size=" + size + '}';
+    }
     
     
 }

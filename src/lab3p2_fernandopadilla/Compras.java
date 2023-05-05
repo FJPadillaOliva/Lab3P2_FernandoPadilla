@@ -6,4 +6,5 @@ import java.util.ArrayList;
 
 public class Compras {
     private ArrayList<Productos> cart = new ArrayList();
+    
 }
