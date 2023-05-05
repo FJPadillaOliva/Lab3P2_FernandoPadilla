@@ -77,4 +77,8 @@ public class Lab3P2_FernandoPadilla {
         }
         productos.add(new Comidas(expirado, nombre, precio));
     }
+    
+    public static void agregarB(){
+        
+    }
 }
