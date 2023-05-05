@@ -52,13 +52,13 @@ public class Lab3P2_FernandoPadilla {
                     eliminarP(tipo,nombre);
                     break;
                 case 5:
-
+                    imprimirL();
                     break;
                 case 6:
-
+                    
                     break;
                 case 7:
-
+                    
                     break;
                 case 8:
                     opcion = 8;
