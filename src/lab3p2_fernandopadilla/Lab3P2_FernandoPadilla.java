@@ -41,7 +41,15 @@ public class Lab3P2_FernandoPadilla {
                     modificarP(tipo, nombre);
                     break;
                 case 4:
-                    
+                    imprimirL();
+                    do {
+                        System.out.println("Ingrese el tipo de producto a eliminar(1-Comida/2-Bebida): ");
+                        tipo = read.nextInt();
+                    } while (tipo < 1 || tipo > 2);
+                    System.out.println("Ingrese el nombre del producto a eliminar: ");
+                    read.nextLine();
+                    nombre = read.nextLine();
+                    eliminarP(tipo,nombre);
                     break;
                 case 5:
 
@@ -184,7 +192,31 @@ public class Lab3P2_FernandoPadilla {
                 break;
         }
     }
-    public static void eliminarP(){
-        
+    
+    public static void eliminarP(int tipo, String nombre){
+        switch(tipo){
+            case 1:
+                for (Productos t : productos) {
+                    if (t instanceof Comidas) {
+                        if(t.getNombre().equals(nombre)){
+                            productos.remove(productos.indexOf(t));
+                        }else{
+                            System.out.println("El producto no existe");
+                        }
+                    }
+                }
+            break;
+            case 2:
+                for (Productos t : productos) {
+                    if (t instanceof Bebidas) {
+                        if(t.getNombre().equals(nombre)){
+                            productos.remove(productos.indexOf(t));
+                        }else{
+                            System.out.println("El producto no existe");
+                        }
+                    }
+                }
+            break;
+        }
     }
 }
