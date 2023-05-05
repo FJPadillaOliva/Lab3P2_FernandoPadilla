@@ -30,14 +30,15 @@ public class Lab3P2_FernandoPadilla {
                 break;
             case 3:
                 imprimirL();
-                /*int tipo = 0;
+                int tipo;
                 do{
                     System.out.println("Ingrese el tipo de producto a modificar(1-Comida/2-Bebida): ");
                     tipo = read.nextInt();
                 }while(tipo!= 1 || tipo!= 2);
-                System.out.println("Ingrese el indice del producto: ");
-                int indice = read.nextInt();
-                modificarP(tipo, indice);*/
+                System.out.println("Ingrese el nombre del producto a modificar:");
+                read.nextLine();
+                String nombre = read.nextLine();
+                modificarP(tipo, nombre);
                 break;
             case 4:
                 
@@ -122,36 +123,42 @@ public class Lab3P2_FernandoPadilla {
         }
     }
     
-    public static void modificarP(int tipo, int indice){
-        switch (tipo){
+    public static void modificarP(int tipo, String nombre){
+        switch(tipo){
             case 1:
-                boolean expirado = false;
-                System.out.println("Ingrese el nuevo nombre del producto de comida: ");
-                String nombre = read.next();
-                double precio;
-                do {
-                    System.out.println("Ingrese el nuevo precio del producto de comida: ");
-                    precio = read.nextDouble();
-                } while (precio < 0);
-                int estado;
-                do {
-                    System.out.println("Ingrese el nuevo estado de vencimiento del producto (0-Uso optimo/1-Expirado)");
-                    estado = read.nextInt();
-                    switch (estado) {
-                        case 0:
-                            expirado = false;
-                            break;
-                        case 1:
-                            expirado = true;
-                            break;
-                        default:
-                            System.out.println("Opcion no valida");
-                            break;
+                for (Productos t : productos) {
+                    if (t instanceof Comidas) {
+                        if (t.getNombre().equals(nombre)) {
+                            boolean estadoN = false;
+                            System.out.println("Ingrese el nuevo nombre del producto: ");
+                            read.nextLine();
+                            String nombreN = read.nextLine();
+                            t.setNombre(nombreN);
+                            System.out.println("Ingrese el nuevo precio del producto: ");
+                            double precio;
+                            do{
+                                precio = read.nextDouble();
+                            }while(precio<0);
+                            t.setPrecio(precio);
+                            int estado;
+                            do{
+                                System.out.println("Ingrese el nuevo estado de vencimiento(0-Uso optimo/1-Expirado): ");
+                                estado = read.nextInt();
+                            }while(estado<0 || estado>1);
+                            if(estado == 0){
+                                estadoN = false;
+                            }else{
+                                estadoN = true;
+                            }
+                            ((Comidas) t).setVencimiento(estadoN);
+                        }else{
+                            System.out.println("Producto no encontrado");
+                        }
                     }
-                } while (estado < 0 || estado > 1);
+                }
                 break;
             case 2:
-                
+
                 break;
         }
     }
