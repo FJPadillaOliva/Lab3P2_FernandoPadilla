@@ -40,7 +40,7 @@ public class Comidas extends Productos {
 
     @Override
     public String toString() {
-        return "Comidas{" + "vencimiento=" + vencimiento + '}';
+        return "Nombre = " + nombre + '\n' +"Precio = "+ precio + "Lps. \n" +  "Expirado = " + vencimiento + '\n';
     }
     
 }
