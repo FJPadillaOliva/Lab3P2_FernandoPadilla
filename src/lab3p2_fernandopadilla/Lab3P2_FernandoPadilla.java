@@ -1,114 +1,114 @@
-
 package lab3p2_fernandopadilla;
+
 import java.util.*;
 
 public class Lab3P2_FernandoPadilla {
 
     static Scanner read = new Scanner(System.in);
     static ArrayList<Productos> productos = new ArrayList();
-    
+
     public static void main(String[] args) {
         int opcion = 0;
-        do{
-        System.out.println("	Menu\n"
-                + "----------------------\n"
-                + "1-Agregar Comida\n"
-                + "2-Agregar Bebida\n"
-                + "3-Modificar Productos\n"
-                + "4-Eliminar Productos\n"
-                + "5-Mostrar Productos\n"
-                + "6-Generar Compra\n"
-                + "7-Registro Compras\n"
-                + "8-Salida\n");
-        opcion = read.nextInt();
-        switch(opcion){
-            case 1:
-                agregarC();
-                break;
-            case 2:
-                agregarB();
-                break;
-            case 3:
-                imprimirL();
-                int tipo;
-                do{
-                    System.out.println("Ingrese el tipo de producto a modificar(1-Comida/2-Bebida): ");
-                    tipo = read.nextInt();
-                }while(tipo!= 1 || tipo!= 2);
-                System.out.println("Ingrese el nombre del producto a modificar:");
-                read.nextLine();
-                String nombre = read.nextLine();
-                modificarP(tipo, nombre);
-                break;
-            case 4:
-                
-                break;
-            case 5:
-                
-                break;
-            case 6:
-                
-                break;
-            case 7:
-                
-                break;
-            case 8:
-                opcion = 8;
-                break;
-            default:
-                System.out.println("Opcion no valida");
-                break;
-        }
-        }while(opcion != 8);
+        do {
+            System.out.println("	Menu\n"
+                    + "----------------------\n"
+                    + "1-Agregar Comida\n"
+                    + "2-Agregar Bebida\n"
+                    + "3-Modificar Productos\n"
+                    + "4-Eliminar Productos\n"
+                    + "5-Mostrar Productos\n"
+                    + "6-Generar Compra\n"
+                    + "7-Registro Compras\n"
+                    + "8-Salida\n");
+            opcion = read.nextInt();
+            switch (opcion) {
+                case 1:
+                    agregarC();
+                    break;
+                case 2:
+                    agregarB();
+                    break;
+                case 3:
+                    imprimirL();
+                    int tipo;
+                    do {
+                        System.out.println("Ingrese el tipo de producto a modificar(1-Comida/2-Bebida): ");
+                        tipo = read.nextInt();
+                    } while (tipo < 1 || tipo > 2);
+                    System.out.println("Ingrese el nombre del producto a modificar:");
+                    read.nextLine();
+                    String nombre = read.nextLine();
+                    modificarP(tipo, nombre);
+                    break;
+                case 4:
+                    
+                    break;
+                case 5:
+
+                    break;
+                case 6:
+
+                    break;
+                case 7:
+
+                    break;
+                case 8:
+                    opcion = 8;
+                    break;
+                default:
+                    System.out.println("Opcion no valida");
+                    break;
+            }
+        } while (opcion != 8);
     }
-    
-    public static void agregarC(){
+
+    public static void agregarC() {
         boolean expirado = false;
         System.out.println("Ingrese el nombre del producto de comida: ");
         read.nextLine();
         String nombre = read.nextLine();
         double precio;
-        do{
+        do {
             System.out.println("Ingrese el precio del producto de comida: ");
             precio = read.nextDouble();
-        }while(precio<0);
+        } while (precio < 0);
         int estado;
-        do{
+        do {
             System.out.println("Ingrese el estado de vencimiento del producto (0-Uso optimo/1-Expirado)");
             estado = read.nextInt();
-            switch(estado){
+            switch (estado) {
                 case 0:
                     expirado = false;
                     break;
                 case 1:
                     expirado = true;
                     break;
-                default: 
+                default:
                     System.out.println("Opcion no valida");
                     break;
             }
-        }while(estado<0 || estado >1);
+        } while (estado < 0 || estado > 1);
         productos.add(new Comidas(expirado, nombre, precio));
     }
-    
-    public static void agregarB(){
-     System.out.println("Ingrese el nombre de la bebida: ");
+
+    public static void agregarB() {
+        System.out.println("Ingrese el nombre de la bebida: ");
         read.nextLine();
         String nombre = read.nextLine();
         double precio;
-        do{
+        do {
             System.out.println("Ingrese el precio de la bebida: ");
             precio = read.nextDouble();
-        }while(precio<0);
+        } while (precio < 0);
         int size;
-        do{
+        do {
             System.out.println("Ingrese el tamaño de la bebida: ");
             size = read.nextInt();
-        }while(size<0);
+        } while (size < 0);
         productos.add(new Bebidas(size, nombre, precio));
     }
-    
-    public static void imprimirL(){
+
+    public static void imprimirL() {
         System.out.println("Comidas: ");
         for (Productos t : productos) {
             if (t instanceof Comidas) {
@@ -122,9 +122,9 @@ public class Lab3P2_FernandoPadilla {
             }
         }
     }
-    
-    public static void modificarP(int tipo, String nombre){
-        switch(tipo){
+
+    public static void modificarP(int tipo, String nombre) {
+        switch (tipo) {
             case 1:
                 for (Productos t : productos) {
                     if (t instanceof Comidas) {
@@ -136,30 +136,55 @@ public class Lab3P2_FernandoPadilla {
                             t.setNombre(nombreN);
                             System.out.println("Ingrese el nuevo precio del producto: ");
                             double precio;
-                            do{
+                            do {
                                 precio = read.nextDouble();
-                            }while(precio<0);
+                            } while (precio < 0);
                             t.setPrecio(precio);
                             int estado;
-                            do{
+                            do {
                                 System.out.println("Ingrese el nuevo estado de vencimiento(0-Uso optimo/1-Expirado): ");
                                 estado = read.nextInt();
-                            }while(estado<0 || estado>1);
-                            if(estado == 0){
+                            } while (estado < 0 || estado > 1);
+                            if (estado == 0) {
                                 estadoN = false;
-                            }else{
+                            } else {
                                 estadoN = true;
                             }
                             ((Comidas) t).setVencimiento(estadoN);
-                        }else{
+                        } else {
                             System.out.println("Producto no encontrado");
                         }
                     }
                 }
                 break;
             case 2:
-
+                for (Productos t : productos) {
+                    if (t instanceof Bebidas) {
+                        if (t.getNombre().equals(nombre)) {
+                            System.out.println("Ingrese el nuevo nombre del producto: ");
+                            read.nextLine();
+                            String nombreN = read.nextLine();
+                            t.setNombre(nombreN);
+                            System.out.println("Ingrese el nuevo precio del producto: ");
+                            double precio;
+                            do {
+                                precio = read.nextDouble();
+                            } while (precio < 0);
+                            t.setPrecio(precio);
+                            int size;
+                            do {
+                                System.out.println("Ingrese el nuevo tamaño de la bebida: ");
+                                size = read.nextInt();
+                            } while (size < 0);
+                        } else {
+                            System.out.println("Producto no encontrado");
+                        }
+                    }
+                }
                 break;
         }
+    }
+    public static void eliminarP(){
+        
     }
 }

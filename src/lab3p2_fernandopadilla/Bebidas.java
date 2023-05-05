@@ -40,7 +40,7 @@ public class Bebidas extends Productos {
 
     @Override
     public String toString() {
-        return "Nombre = " + nombre + '\n' +"Precio = "+ precio + "Lps. \n" + "Tamaño = " + size + '\n';
+        return "Nombre = " + nombre + '\n' +"Precio = "+ precio + "Lps. \n" + "Tamaño = " + size + ".mL "+ '\n';
     }
     
     
