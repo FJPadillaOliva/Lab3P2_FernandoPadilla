@@ -6,6 +6,7 @@ public class Lab3P2_FernandoPadilla {
 
     static Scanner read = new Scanner(System.in);
     static ArrayList<Productos> productos = new ArrayList();
+    static ArrayList Compras = new ArrayList();
 
     public static void main(String[] args) {
         int opcion = 0;
@@ -55,7 +56,7 @@ public class Lab3P2_FernandoPadilla {
                     imprimirL();
                     break;
                 case 6:
-                    
+                    simularC(); 
                     break;
                 case 7:
                     
@@ -219,4 +220,41 @@ public class Lab3P2_FernandoPadilla {
             break;
         }
     }
+    
+    public static void simularC() {
+        imprimirL();
+        int opc;
+        do {
+            System.out.println("	Menu\n"
+                    + "----------------------\n"
+                    + "1-Agregar Producto\n"
+                    + "2-Imprimir total de compra\n");
+            opc = read.nextInt();
+            double total = 0;
+            switch(opc){
+                case 1:
+                    System.out.println("Ingrese el nombre del producto: ");
+                    read.nextLine();
+                    String nombre = read.nextLine();
+                    for (Productos t : productos) {
+                        if (t.getNombre().equals(nombre)) {
+                            Compras.add(t);
+                            total += t.getPrecio();
+                        }
+                    }
+                    break;
+                case 2:
+                    for (Object t : Compras) {
+                        System.out.println(t);
+                    }
+                    System.out.println("El total a pagar es de: "+ total);
+                    break;
+                default:
+                    System.out.println("Opcion no valida");
+                    break;
+        }
+        } while (opc != 2);
+    }
+    
+    
 }
